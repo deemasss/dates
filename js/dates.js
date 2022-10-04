@@ -40,7 +40,7 @@ function getDay(date, lang) {
 // Вид должен быть такой 12:02(часы и минуты), то есть если у вас одно число на одном из
 // компонентов, то добавляем 0 перед ним
 function formatTime(date) {
-  return (new Date(date)).toTimeString().slice(0, -50);
+  return date.toLocaleTimeString(toString).slice(0, -3)
   //getHours() getMinutes()
 }
 
