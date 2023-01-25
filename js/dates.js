@@ -23,6 +23,7 @@ function getDay(date, lang) {
       6: 'Суббота',
     },
   };
+
   if (lang === 'en') {
       let enDays = [];
       for (let days in dayNames.en) { enDays.push(dayNames.en[days]) };
@@ -40,10 +41,10 @@ function getDay(date, lang) {
 // Вид должен быть такой 12:02(часы и минуты), то есть если у вас одно число на одном из
 // компонентов, то добавляем 0 перед ним
 function formatTime(date) {
-  let x = date.toLocaleTimeString()
-   
-  return x.slice(0, -3)
-  //getHours() getMinutes()
+
+  let h = date.getHours().toString().padStart(2, '0');
+  let m = date.getMinutes().toString().padStart(2, '0');
+  return (`${h}:${m}`);
 }
 
 /*
@@ -56,9 +57,8 @@ month – месяц от 0 до 11.
 К примеру, getLastDayOfMonth(2012, 1) = 29 (високосный год, февраль).
 */
 function getLastDayOfMonth(year, month) {
-  let x = (new Date).setMonth(new Date(year, month).getMonth() + 1);
-  let y = new Date(x).setDate(0);
-  return new Date(y).getDate();
+  let date = new Date(year, month + 1, 0);
+  return date.getDate();
 }
 
 module.exports = {
